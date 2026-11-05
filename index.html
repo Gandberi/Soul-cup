@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тёплый Уголок</title>
-    <!-- PWA Manifest for mobile installation -->
-    <link rel="manifest" href="data:application/manifest+json;charset=utf-8,%7B%22name%22%3A%22%D0%A2%D1%91%D0%BF%D0%BB%D1%8B%D0%B9%20%D0%A3%D0%B3%D0%BE%D0%BB%D0%BE%D0%BA%22%2C%22short_name%22%3A%22%D0%A2%D1%91%D0%BF%D0%BB%D1%8B%D0%B9%20%D0%A3%D0%B3%D0%BE%D0%BB%D0%BE%D0%BA%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%231b1412%22%2C%22theme_color%22%3A%22%231b1412%22%7D">
+    <!-- PWA Manifest with custom icon -->
+    <link rel="manifest" href="data:application/manifest+json;charset=utf-8,%7B%22name%22%3A%22%D0%A2%D1%91%D0%BF%D0%BB%D1%8B%D0%B9%20%D0%A3%D0%B3%D0%BE%D0%BB%D0%BE%D0%BA%22%2C%22short_name%22%3A%22%D0%A2%D1%91%D0%BF%D0%BB%D1%8B%D0%B9%20%D0%A3%D0%B3%D0%BE%D0%BB%D0%BE%D0%BA%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%231b1412%22%2C%22theme_color%22%3A%22%231b1412%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%3Butf8%2C%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%2C0%2C100%2C100'%3E%3Crect%20width%3D'100'%20height%3D'100'%20rx%3D'25'%20fill%3D'%232c221e'%2F%3E%3Ctext%20x%3D'50%25'%20y%3D'55%25'%20dominant-baseline%3D'middle'%20text-anchor%3D'middle'%20font-size%3D'50'%3E☕%3C%2Ftext%3E%3C%2Fsvg%3E%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
     <meta name="theme-color" content="#1b1412">
     
     <!-- Tailwind CSS -->
@@ -84,10 +84,10 @@
     <main class="w-full max-w-md px-6 py-4 flex flex-col items-center z-10 flex-grow justify-center">
 
         <!-- Decorative Element -->
-        <div class="relative my-4">
+        <div class="relative my-3">
             <div class="absolute inset-0 bg-amberGlow/10 rounded-full blur-2xl"></div>
-            <div class="relative z-10 w-24 h-24 bg-gradient-to-br from-roast to-espresso rounded-3xl border-2 border-warmSand/20 shadow-2xl flex flex-col items-center justify-center">
-                <i class="fa-solid fa-mug-hot text-3xl text-amberGlow mb-1"></i>
+            <div class="relative z-10 w-20 h-20 bg-gradient-to-br from-roast to-espresso rounded-3xl border-2 border-warmSand/20 shadow-2xl flex flex-col items-center justify-center">
+                <i class="fa-solid fa-mug-hot text-2xl text-amberGlow mb-0.5"></i>
             </div>
         </div>
 
@@ -98,7 +98,7 @@
                 <span id="quoteVibe" class="text-xs italic text-warmSand/50 font-marcellus">атмосфера дня</span>
             </div>
 
-            <div class="min-h-[120px] flex items-center justify-center my-2">
+            <div class="min-h-[110px] flex items-center justify-center my-2">
                 <p id="quoteText" class="font-marcellus text-lg sm:text-xl text-center text-cream leading-relaxed font-light">
                     <!-- Loaded dynamically -->
                 </p>
@@ -108,21 +108,29 @@
                 <span id="quoteAuthor" class="text-xs text-amberGlow/80 font-medium tracking-wide"></span>
             </div>
 
-            <div class="flex items-center justify-center pt-4 border-t border-warmSand/10">
+            <!-- Actions Row & Moved Countdown Inside/Right Below -->
+            <div class="space-y-3 pt-4 border-t border-warmSand/10">
                 <button onclick="copyQuote()" class="w-full flex items-center justify-center space-x-2 text-warmSand/90 hover:text-amberGlow transition-colors text-xs py-2.5 px-4 rounded-xl bg-espresso/60 border border-warmSand/10 shadow-inner">
                     <i class="fa-regular fa-copy text-sm"></i>
                     <span>Скопировать фразу</span>
                 </button>
+
+                <!-- Countdown right inside the card area -->
+                <div class="text-center pt-1">
+                    <span class="text-[11px] text-warmSand/50 flex items-center justify-center space-x-1.5">
+                        <i class="fa-regular fa-clock text-amberGlow text-xs"></i>
+                        <span>Новая фраза через: <strong id="countdown" class="text-warmSand font-semibold tracking-wider">00:00:00</strong></span>
+                    </span>
+                </div>
             </div>
         </div>
 
     </main>
 
-    <!-- Footer Countdown -->
-    <footer class="w-full max-w-md px-6 py-4 z-10 flex flex-col items-center text-center">
-        <div class="text-xs text-warmSand/50 flex items-center space-x-2 bg-roast/40 px-4 py-2 rounded-full border border-warmSand/5">
-            <i class="fa-regular fa-clock text-amberGlow"></i>
-            <span>Новая фраза через: <strong id="countdown" class="text-warmSand font-semibold tracking-wider">00:00:00</strong></span>
+    <!-- Footer Space Filler -->
+    <footer class="w-full max-w-md px-6 py-2 z-10 text-center">
+        <div class="text-[10px] text-warmSand/30 tracking-wider">
+            Создано для души ✨
         </div>
     </footer>
 
@@ -143,10 +151,10 @@
                 <div class="bg-espresso/40 p-4 rounded-2xl border border-warmSand/10 space-y-2">
                     <div class="font-medium text-cream text-sm flex items-center space-x-2">
                         <i class="fa-solid fa-mobile-screen text-amberGlow"></i>
-                        <span>Как скачать на главный экран</span>
+                        <span>Как установить на главный экран</span>
                     </div>
                     <p class="text-warmSand/75 leading-relaxed">
-                        Нажмите на три точки в правом верхнем углу браузера и выберите <strong>«Установить приложение»</strong> или <strong>«Добавить на главный экран»</strong>. Сайт закрепится как отдельная иконка.
+                        Нажмите на три точки в правом верхнем углу браузера и выберите <strong>«Установить приложение»</strong> или <strong>«Добавить на главный экран»</strong>.
                     </p>
                 </div>
             </div>
@@ -181,7 +189,6 @@
             { text: "Пусть сегодняшний вечер принесет тебе долгожданное умиротворение и мягкое расслабление.", category: "Вечер", vibe: "уютный вечер", author: "— Покой" }
         ];
 
-        // Strict daily quote based on date
         function getDailyQuote() {
             const now = new Date();
             const dateStr = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
