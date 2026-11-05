@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тёплый Уголок</title>
-    <!-- PWA Manifest with custom icon -->
-        <!-- PWA Manifest linked to icon file -->
-    <link rel="manifest" href="data:application/manifest+json;charset=utf-8,%7B%22name%22%3A%22%D0%A2%D1%91%D0%BF%D0%BB%D1%8B%D0%B9%20%D0%A3%D0%B3%D0%BE%D0%BB%D0%BE%D0%BA%22%2C%22short_name%22%3A%22%D0%A2%D1%91%D0%BF%D0%BB%D1%8B%D0%B9%20%D0%A3%D0%B3%D0%BE%D0%BB%D0%BE%D0%BA%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%231b1412%22%2C%22theme_color%22%3A%22%231b1412%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22icon.png%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D">
+    <!-- Simple PWA & Apple Touch Icon setup -->
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2935/2935307.png">
     <meta name="theme-color" content="#1b1412">
     
     <!-- Tailwind CSS -->
@@ -109,14 +108,12 @@
                 <span id="quoteAuthor" class="text-xs text-amberGlow/80 font-medium tracking-wide"></span>
             </div>
 
-            <!-- Actions Row & Moved Countdown Inside/Right Below -->
             <div class="space-y-3 pt-4 border-t border-warmSand/10">
                 <button onclick="copyQuote()" class="w-full flex items-center justify-center space-x-2 text-warmSand/90 hover:text-amberGlow transition-colors text-xs py-2.5 px-4 rounded-xl bg-espresso/60 border border-warmSand/10 shadow-inner">
                     <i class="fa-regular fa-copy text-sm"></i>
                     <span>Скопировать фразу</span>
                 </button>
 
-                <!-- Countdown right inside the card area -->
                 <div class="text-center pt-1">
                     <span class="text-[11px] text-warmSand/50 flex items-center justify-center space-x-1.5">
                         <i class="fa-regular fa-clock text-amberGlow text-xs"></i>
@@ -155,7 +152,7 @@
                         <span>Как установить на главный экран</span>
                     </div>
                     <p class="text-warmSand/75 leading-relaxed">
-                        Нажмите на три точки в правом верхнем углу браузера и выберите <strong>«Установить приложение»</strong> или <strong>«Добавить на главный экран»</strong>.
+                        Нажмите на три точки в правом верхнем углу браузера и выберите <strong>«Добавить на главный экран»</strong>.
                     </p>
                 </div>
             </div>
